@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Manager - Search</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+
+        .header {
+            background: #4a6cf7;
+            color: white;
+            padding: 25px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 5px;
+        }
+
+        .search-box {
+            padding: 30px;
+            background: #f9f9ff;
+        }
+
+        .search-form {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .search-form input, .search-form select {
+            flex: 1;
+            padding: 14px 18px;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            font-size: 14px;
+            font-family: inherit;
+            transition: all 0.3s;
+        }
+
+        .search-form input:focus, .search-form select:focus {
+            outline: none;
+            border-color: #4a6cf7;
+            box-shadow: 0 0 0 3px rgba(74,108,247,0.1);
+        }
+
+        .search-form button {
+            background: #4a6cf7;
+            color: white;
+            border: none;
+            padding: 0 25px;
+            border-radius: 12px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+            font-size: 16px;
+        }
+
+        .search-form button:hover {
+            background: #3451c9;
+        }
+
+        .results {
+            padding: 20px 30px 30px;
+        }
+
+        .results h3 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 18px;
+            border-left: 4px solid #4a6cf7;
+            padding-left: 12px;
+        }
+
+        .info-text {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .nav-links {
+            text-align: center;
+            padding: 20px;
+            background: white;
+            border-radius: 20px;
+            margin-top: 10px;
+        }
+
+        .nav-links a {
+            color: #4a6cf7;
+            text-decoration: none;
+            font-weight: 500;
+            margin: 0 10px;
+        }
+
+        .nav-links a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 600px) {
+            .search-form {
+                flex-direction: column;
+            }
+            .search-form button {
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="header">
+                <h1>🔍 Search Contacts</h1>
+                <p>Search by name, city, email, phone, or group</p>
+            </div>
+            <div class="search-box">
+                <form action="/search_results" method="get" class="search-form">
+                    <input type="text" name="q" placeholder="e.g., John, Tehran, 123..." autocomplete="off">
+                    <!-- فیلتر گروه اضافه شد -->
+                    <select name="group_filter">
+                        <option value="">همه گروه‌ها</option>
+                        <option value="خانواده">خانواده</option>
+                        <option value="دوستان">دوستان</option>
+                        <option value="همکاران">همکاران</option>
+                        <option value="سایر">سایر</option>
+                    </select>
+                    <button type="submit">Search</button>
+                </form>
+            </div>
+            <div class="results">
+                <h3>✨ How to search</h3>
+                <p class="info-text">Enter any keyword (name, city, email, or part of a phone number) and/or choose a group. All matching contacts will be displayed.</p>
+            </div>
+        </div>
+        <div class="nav-links">
+            <a href="/">➕ Add New Contact</a>
+        </div>
+    </div>
+</body>
+</html>
